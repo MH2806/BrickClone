@@ -1,0 +1,33 @@
+name: BrickClone
+options:
+  bundleIdPrefix: com.majd
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  BrickClone:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+    info:
+      path: Resources/Info.plist
+      properties:
+        NFCReaderUsageDescription: "This app uses NFC to detect your Brick tag and lock or unlock distracting apps."
+        UILaunchScreen: {}
+    entitlements:
+      path: Resources/BrickClone.entitlements
+      properties:
+        com.apple.developer.family-controls.development: true
+        com.apple.developer.nfc.readersession.formats:
+          - NDEF
+          - TAG
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.majd.brickclone
+        DEVELOPMENT_TEAM: "$(DEVELOPMENT_TEAM)"
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "iPhone Developer"
+        PROVISIONING_PROFILE_SPECIFIER: "$(PROVISIONING_PROFILE_SPECIFIER)"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "16.0"
